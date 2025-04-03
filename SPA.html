@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Create New Account</title>
+</head>
+<body>
+
+<!-- Account Creation Page -->
+<section id="accountPage" class="page active">
+
+<form id="accountForm">
+<input type="text" id="fname" name="fname" placeholder="First Name" required>
+<input type="text" id="lname" name="lname" placeholder="Last Name" required><br><br>
+<input type="text" id="number" name="number" placeholder="Phone Number" required>
+<select name="role" id="role" required>
+<option value="" disabled selected>Select Role</option>
+<option value="User">User</option>
+</select><br><br>
+<input type="email" id="email" name="email" placeholder="Email" required>
+<input type="text" id="uname" name="uname" placeholder="Username" required><br><br>
+<input type="password" id="accountPassword" name="password" placeholder="Password" required>
+<button class="create-logo" type="submit">Create!</button><br><br>
+</form>
+<p>
+<a href="#" id="login_link">Already Have An Account</a>
+</p>
+</section>
+
+</body>
+</html>
