@@ -240,7 +240,30 @@ display: none;
     <button id="logoutButton" type="button">Log Out</button>
     </div>
     
-
+<!-- Content area -->
+<div id="tabContentWrapper">
+    <!-- Home Tab (Profile Section) -->
+    <div id="home" class="tabcontent">
+    <section id="homepage" class="page">
+    <h2>Profile</h2>
+    <p><span id="displayname"></span></p>
+    <p><span id="displayemail"></span></p><br>
+    <label for="pname">Preferred Name: </label><br>
+    <input type="text" id="pname" name="pname"><br>
+    <label for="dob">Date Of Birth: </label><br>
+    <input type="date" id="dob" name="dob"><br>
+    <label for="country">Country: </label><br>
+    <input type="text" id="country" name="country"><br>
+    <label for="county">County: </label><br>
+    <input type="text" id="county" name="county"><br>
+    <label for="city">City: </label><br>
+    <input type="text" id="city" name="city"><br>
+    <label for="postcode">Post Code: </label><br>
+    <input type="text" id="postcode" name="postcode"><br><br>
+    <button id="saveProfileButton" type="button">Save Profile</button>
+    </section>
+    </div>
+</div>    
 
 <script>
     // Handle the Create Account Design for it not to show on every page
