@@ -135,6 +135,21 @@ document.getElementById("defaultOpen").click();
 document.getElementById("homepage").classList.add("active");
 });
 
+// Save account data during registration
+function saveAccountData() {
+let accountData = {
+firstName: document.getElementById("fname").value,
+lastName: document.getElementById("lname").value,
+phoneNumber: document.getElementById("number").value,
+role: document.getElementById("role").value,
+email: document.getElementById("email").value,
+username: document.getElementById("uname").value,
+password: document.getElementById("accountPassword").value
+};
+localStorage.setItem("accountData", JSON.stringify(accountData));
+}
+
+
 </script>
 </body>
 </html>
