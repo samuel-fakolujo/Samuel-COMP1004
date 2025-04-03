@@ -720,6 +720,12 @@ historyList.appendChild(li);
 }
 }
 
+// Log out functionality
+document.getElementById("logoutButton").addEventListener("click", function() {
+localStorage.removeItem("loggedIn");
+document.getElementById("tabsContainer").style.display = "none";
+document.getElementById("loginPage").style.display = "block";
+});
 
 </script>
 </body>
