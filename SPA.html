@@ -179,7 +179,66 @@ font-size: 12px;
 font-weight: bold;
 }
 
+#calendar {
 
+width: 700px;
+height: auto;
+border: 1px solid #e7bd00;
+background: #fff;
+margin-bottom: 20px;
+}
+#calendar-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px;
+background: #ffffff;
+}
+.day-names, #days {
+display: grid;
+grid-template-columns: repeat(7, 1fr);
+text-align: center;
+}
+.day-names div, #days div {
+padding: 10px;
+border: 1px solid #e7bd00;
+}
+#days .date {
+cursor: pointer;
+user-select: none;
+}
+#days .date:hover {
+background: #f0f0f0;
+}
+#task-panel {
+border-radius: 15px;
+position: fixed;
+right: 20px;
+top: 100px;
+width: 250px;
+padding: 15px;
+border: 1px solid #e7bd00;
+background: #ffffff;
+opacity: 0;
+visibility: hidden;
+transition: opacity 0.3s ease, visibility 0.3s ease;
+z-index: 1000;
+}
+#task-panel.show {
+opacity: 1;
+visibility: visible;
+}
+#task-panel h3 {
+margin-top: 0;
+}
+#task-panel li {
+margin-bottom: 10px;
+list-style: none;
+}
+#task-panel input[type="text"] {
+width: 100%;
+box-sizing: border-box;
+}
 
 
 </style>
