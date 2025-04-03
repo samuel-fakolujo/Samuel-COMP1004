@@ -5,6 +5,13 @@
 <title>Create New Account</title>
 <style>
     
+    .page {
+display: none;
+}
+.page.active {
+display: block;
+}
+
     #logo {
 display: block;
 align-items: center; 
@@ -107,6 +114,27 @@ text-transform: uppercase;
 <a href="#" id="login_link">Already Have An Account</a>
 </p>
 </section>
+<script>
+    // Handle the Create Account Design for it not to show on every page
+    function toggleAccountHeader(show) {
+document.querySelector(".account").style.display = show ? "block" : "none";
+}
 
+ // Handle account creation form submission
+document.getElementById("accountForm").addEventListener("submit", function(event) {
+event.preventDefault();
+saveAccountData();
+displayLines();
+localStorage.setItem("loggedIn", "true");
+document.getElementById("accountPage").classList.remove("active");
+document.getElementById("accountPage").style.display = "none";
+toggleAccountHeader(false);
+document.getElementById("tabsContainer").style.display = "flex";
+displayLines();
+document.getElementById("defaultOpen").click();
+document.getElementById("homepage").classList.add("active");
+});
+
+</script>
 </body>
 </html>
