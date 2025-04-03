@@ -213,6 +213,21 @@ password: document.getElementById("accountPassword").value
 localStorage.setItem("accountData", JSON.stringify(accountData));
 }
 
+// Navigation between login and create account pages
+document.getElementById("login_link").addEventListener("click", function(event) {
+event.preventDefault();
+toggleAccountHeader(false);
+document.getElementById("accountPage").style.display = "none";
+document.getElementById("loginPage").style.display = "block";
+});
+
+document.getElementById("create_account_link").addEventListener("click", function(event) {
+event.preventDefault();
+toggleAccountHeader(true);
+document.getElementById("loginPage").style.display = "none";
+document.getElementById("accountPage").style.display = "block";
+});
+
 
 </script>
 </body>
