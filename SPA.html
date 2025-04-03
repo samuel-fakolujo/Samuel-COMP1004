@@ -377,7 +377,11 @@ box-sizing: border-box;
     </ul>
     </div>
     </div>
-    
+    <!-- History Tab -->
+<div id="history" class="tabcontent">
+    <h3>History</h3>
+    <ul id="historyList"></ul>
+    </div>    
 
 </div>    
 
@@ -651,6 +655,25 @@ document.getElementById('task1').addEventListener('change', saveTasks);
 document.getElementById('task2').addEventListener('change', saveTasks);
 document.getElementById('task3').addEventListener('change', saveTasks);
 
+// History Tab Function
+function updateHistory() {
+const historyList = document.getElementById('historyList');
+historyList.innerHTML = ''; 
+for (let i = 0; i < localStorage.length; i++) {
+const key = localStorage.key(i);
+if (key.startsWith('tasks_')) {
+const tasks = JSON.parse(localStorage.getItem(key));
+const taskDate = key.replace('tasks_', '');
+for (let task in tasks) {
+if (tasks[task].done && tasks[task].text.trim() !== '') {
+const li = document.createElement('li');
+li.textContent = `${taskDate}: ${tasks[task].text}`;
+historyList.appendChild(li);
+}
+}
+}
+}
+}
 
 
 </script>
