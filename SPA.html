@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <title>Create New Account</title>
 <style>
+    
+    #logo {
+display: block;
+align-items: center; 
+margin-left: 500px;
+margin-right: auto;
+width: 50%;
+
+}
+
     #accountPage {
 margin-top: 100px;
 display: flex;
@@ -38,11 +48,45 @@ color: #e7bd00;
 font-size: 12px;
 font-weight: bold;
 }
+.title-section {
+display: flex; 
+align-items: center;
+flex: 1; 
+margin-top: -250px;
+margin-right: 20px; 
+}
+
+
+.line {
+flex: 1; 
+border-top: 4px dashed #000; 
+}
+
+
+.title {
+font-size: 1.5; 
+margin: 0 15px; 
+text-transform: uppercase; 
+
+
+}
+
 
 </style>
 </head>
 <body>
-
+    <div class="account">
+        <div id="logo">
+        <img src="logoimg.png">
+        </div>
+        
+        <div class="title-section">
+        <div class="line"></div>
+        <h1 class="title">CREATE NEW ACCOUNT</h1>
+        <div class="line"></div>
+        </div>
+        </div>
+        
 <!-- Account Creation Page -->
 <section id="accountPage" class="page active">
 
