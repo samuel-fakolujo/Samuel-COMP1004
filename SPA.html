@@ -357,6 +357,40 @@ alert("Invalid username/email or password. Please try again.");
 }
 });
 
+function loadAccountData() {
+let accountData = localStorage.getItem("accountData");
+if (accountData) {
+accountData = JSON.parse(accountData);
+document.getElementById("displayname").textContent = accountData.firstName + " " + accountData.lastName;
+document.getElementById("displayemail").textContent = accountData.email;
+}
+}
+
+// Save and load profile data
+function saveData() {
+let profileData = {
+preferredName: document.getElementById("pname").value,
+DateOfBirth: document.getElementById("dob").value,
+Country: document.getElementById("country").value,
+County: document.getElementById("county").value,
+City: document.getElementById("city").value,
+PostCode: document.getElementById("postcode").value
+};
+localStorage.setItem("saveProfile", JSON.stringify(profileData));
+}
+function loadData() {
+let savedData = localStorage.getItem("saveProfile");
+if (savedData) {
+let profileData = JSON.parse(savedData);
+document.getElementById("pname").value = profileData.preferredName;
+document.getElementById("dob").value = profileData.DateOfBirth;
+document.getElementById("country").value = profileData.Country;
+document.getElementById("county").value = profileData.County;
+document.getElementById("city").value = profileData.City;
+document.getElementById("postcode").value = profileData.PostCode;
+}
+}
+
 window.onload = function() {
 loadData();
 if (localStorage.getItem("loggedIn") === "true") {
