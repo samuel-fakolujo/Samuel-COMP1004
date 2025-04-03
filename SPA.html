@@ -298,6 +298,16 @@ document.getElementById("defaultOpen").click();
 document.getElementById("homepage").classList.add("active");
 });
 
+// Display account data on the Home tab
+function displayLines() {
+let firstName = document.getElementById("fname").value;
+let lastName = document.getElementById("lname").value;
+let fullName = firstName + " " + lastName;
+let emailAddress = document.getElementById("email").value;
+document.getElementById("displayname").textContent = fullName;
+document.getElementById("displayemail").textContent = emailAddress;
+}
+
 // Save account data during registration
 function saveAccountData() {
 let accountData = {
