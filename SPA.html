@@ -228,6 +228,26 @@ document.getElementById("loginPage").style.display = "none";
 document.getElementById("accountPage").style.display = "block";
 });
 
+// Handle login form submission and load saved account data
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+event.preventDefault();
+let enteredCredential = document.getElementById("credentials").value;
+let enteredPassword = document.getElementById("loginPassword").value;
+let accountData = JSON.parse(localStorage.getItem("accountData"));
+if (accountData && 
+(accountData.username === enteredCredential || accountData.email === enteredCredential) &&
+accountData.password === enteredPassword) {
+localStorage.setItem("loggedIn", "true");
+document.getElementById("loginPage").style.display = "none";
+document.getElementById("tabsContainer").style.display = "flex";
+loadAccountData();
+document.getElementById("defaultOpen").click();
+document.getElementById("homepage").classList.add("active");
+} else {
+alert("Invalid username/email or password. Please try again.");
+}
+});
+
 
 </script>
 </body>
