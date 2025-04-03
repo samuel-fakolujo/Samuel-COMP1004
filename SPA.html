@@ -529,11 +529,127 @@ evt.currentTarget.className += " active";
 
 }
 
-// Save Profile button event
+// Save Profile button 
 document.getElementById("saveProfileButton").addEventListener("click", function() {
 saveData();
 alert("Profile saved successfully!");
 });
+
+// JavaScript for Calendar Generation and Task Panel Functionality 
+
+let currentDate = new Date();
+let currentMonth = currentDate.getMonth();
+let currentYear = currentDate.getFullYear();
+const monthYearLabel = document.getElementById('month-year');
+const daysContainer = document.getElementById('days');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+const months = [
+"January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"
+];
+
+function generateCalendar(month, year) {
+daysContainer.innerHTML = '';
+monthYearLabel.textContent = `${months[month]} ${year}`;
+let firstDay = new Date(year, month, 1).getDay();
+let daysInMonth = new Date(year, month + 1, 0).getDate();
+for (let i = 0; i < firstDay; i++) {
+const emptyCell = document.createElement('div');
+daysContainer.appendChild(emptyCell);
+}
+for (let i = 1; i <= daysInMonth; i++) {
+const dayCell = document.createElement('div');
+dayCell.classList.add("date");
+const formattedDate = `${year}-${(month+1).toString().padStart(2, '0')}-${i.toString().padStart(2, '0')}`;
+dayCell.setAttribute("data-date", formattedDate);
+dayCell.textContent = i;
+daysContainer.appendChild(dayCell);
+}
+}
+
+prevButton.addEventListener('click', () => {
+currentMonth--;
+if (currentMonth < 0) {
+currentMonth = 11;
+currentYear--;
+}
+generateCalendar(currentMonth, currentYear);
+});
+
+nextButton.addEventListener('click', () => {
+currentMonth++;
+if (currentMonth > 11) {
+currentMonth = 0;
+currentYear++;
+}
+generateCalendar(currentMonth, currentYear);
+});
+
+generateCalendar(currentMonth, currentYear);
+
+let currentTaskDate = null;
+const taskPanel = document.getElementById('task-panel');
+
+function loadTasks(date) {
+const tasks = JSON.parse(localStorage.getItem('tasks_' + date)) || {
+task1: { text: '', done: false },
+task2: { text: '', done: false },
+task3: { text: '', done: false }
+};
+document.getElementById('task1text').value = tasks.task1.text;
+document.getElementById('task1').checked = tasks.task1.done;
+document.getElementById('task2text').value = tasks.task2.text;
+document.getElementById('task2').checked = tasks.task2.done;
+document.getElementById('task3text').value = tasks.task3.text;
+document.getElementById('task3').checked = tasks.task3.done;
+}
+
+function saveTasks() {
+if (!currentTaskDate) return;
+const tasks = {
+task1: {
+text: document.getElementById('task1text').value,
+done: document.getElementById('task1').checked
+},
+task2: {
+text: document.getElementById('task2text').value,
+done: document.getElementById('task2').checked
+},
+task3: {
+text: document.getElementById('task3text').value,
+done: document.getElementById('task3').checked
+}
+};
+localStorage.setItem('tasks_' + currentTaskDate, JSON.stringify(tasks));
+updateHistory();
+}
+
+daysContainer.addEventListener('click', (e) => {
+const target = e.target.closest('.date');
+if (!target) return;
+const clickedDate = target.getAttribute('data-date');
+if (taskPanel.classList.contains('show') && currentTaskDate === clickedDate) {
+saveTasks();
+taskPanel.classList.remove('show');
+currentTaskDate = null;
+} else {
+if (currentTaskDate) {
+saveTasks();
+}
+currentTaskDate = clickedDate;
+document.getElementById('selected-date').textContent = clickedDate;
+loadTasks(clickedDate);
+taskPanel.classList.add('show');
+}
+});
+
+document.getElementById('task1text').addEventListener('input', saveTasks);
+document.getElementById('task2text').addEventListener('input', saveTasks);
+document.getElementById('task3text').addEventListener('input', saveTasks);
+document.getElementById('task1').addEventListener('change', saveTasks);
+document.getElementById('task2').addEventListener('change', saveTasks);
+document.getElementById('task3').addEventListener('change', saveTasks);
 
 
 
